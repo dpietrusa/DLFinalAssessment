@@ -4,6 +4,7 @@ import com.detroitlabs.DLFinalAssessment.Model.EmpireStrikesBackWrapper;
 import com.detroitlabs.DLFinalAssessment.Service.SwapiWebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -14,9 +15,9 @@ public class EmpireStrikesBackController {
     SwapiWebService swapiWebService;
 
     @RequestMapping("/")
-    @ResponseBody
-    public String returnHome() {
+    public String returnHome(ModelMap modelMap) {
         EmpireStrikesBackWrapper empireStrikesBackWrapper = swapiWebService.fetchEmpireStrikesBack();
-        return empireStrikesBackWrapper.getTitle();
+        modelMap.put("episodeVdetails", empireStrikesBackWrapper);
+        return "home";
     }
 }
