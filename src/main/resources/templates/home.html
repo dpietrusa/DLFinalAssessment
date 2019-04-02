@@ -6,6 +6,13 @@
 </head>
 <body>
 <h1 th:text= "'Episode '+ ${episodeVdetails.episodeId} + ': ' + ${episodeVdetails.title}">Title</h1>
+<h3 th:text= "${episodeVdetails.openingCrawl}">Opening Crawl</h3>
+
+<div th:each="MovieCharacters : ${movieCharacterObjects}">
+    <p th:text="${MovieCharacters.name}"></p>
+    <p th:text="${MovieCharacters.url}"></p>
+</div>
+
 
 </body>
 </html>
