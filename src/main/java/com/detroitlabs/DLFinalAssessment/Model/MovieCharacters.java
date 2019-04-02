@@ -44,7 +44,7 @@ public class MovieCharacters {
         this.gender = gender;
     }
 
-    @JsonProperty("home_world")
+    @JsonProperty("homeworld")
     public String getHomeWorld() {
         return homeWorld;
     }
