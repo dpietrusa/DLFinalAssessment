@@ -6,9 +6,9 @@
 </head>
 <body>
 <h1 th:text="${movieCharacters.name}"></h1>
-<p th:text="${movieCharacters.birthYear}"></p>
-<p th:text="${movieCharacters.gender}"></p>
-<p th:text="${movieCharacters.homeWorld}"></p>
+<p th:text="'Birth Year: ' + ${movieCharacters.birthYear}"></p>
+<p th:text="'Gender: ' + ${movieCharacters.gender}"></p>
+<p th:text="'Homeworld: ' + ${homeWorld.name}"></p>
 
 
 </body>
