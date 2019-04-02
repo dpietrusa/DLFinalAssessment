@@ -5,14 +5,16 @@
     <title>Star Wars Episode V: The Empire Strikes Back</title>
 </head>
 <body>
-<h1 th:text= "'Episode '+ ${episodeVdetails.episodeId} + ': ' + ${episodeVdetails.title}">Title</h1>
-<h3 th:text= "${episodeVdetails.openingCrawl}">Opening Crawl</h3>
+<h1 th:text="'Episode '+ ${episodeVdetails.episodeId} + ': ' + ${episodeVdetails.title}">Title</h1>
+<h3 th:text="${episodeVdetails.openingCrawl}">Opening Crawl</h3>
 
 <div th:each="MovieCharacters : ${movieCharacterObjects}">
-    <p th:text="${MovieCharacters.name}"></p>
-    <p th:text="${MovieCharacters.url}"></p>
+
+    <form action="characterdetails.html" method="get">
+        <input th:value="${MovieCharacters.name}" type="submit">
+        <input name="url" th:value="${MovieCharacters.url}" type="hidden"/>
+    </form>
+
 </div>
-
-
 </body>
 </html>
