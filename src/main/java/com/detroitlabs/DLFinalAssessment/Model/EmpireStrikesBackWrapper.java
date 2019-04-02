@@ -1,7 +1,11 @@
 package com.detroitlabs.DLFinalAssessment.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.List;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class EmpireStrikesBackWrapper {
 
     private String title;
@@ -10,6 +14,17 @@ public class EmpireStrikesBackWrapper {
     private String director;
     private String producer;
     private String releaseDate;
+    private List<String> characterLink;
+
+    @JsonProperty("characters")
+    public List<String> getCharacterLink() {
+        return characterLink;
+    }
+
+    @JsonProperty("characters")
+    public void setCharacterLink(List<String> characterLink) {
+        this.characterLink = characterLink;
+    }
 
     public String getTitle() {
         return title;
