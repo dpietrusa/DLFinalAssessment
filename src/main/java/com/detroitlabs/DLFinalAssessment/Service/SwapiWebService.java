@@ -1,6 +1,7 @@
 package com.detroitlabs.DLFinalAssessment.Service;
 
 import com.detroitlabs.DLFinalAssessment.Model.EmpireStrikesBackWrapper;
+import com.detroitlabs.DLFinalAssessment.Model.HomeWorld;
 import com.detroitlabs.DLFinalAssessment.Model.MovieCharacters;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -19,6 +20,12 @@ public class SwapiWebService {
         System.setProperty("http.agent", "name");
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject(url, MovieCharacters.class);
+
+    }
+
+    public HomeWorld fetchHomeWorld(String url){
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(url, HomeWorld.class);
 
     }
 

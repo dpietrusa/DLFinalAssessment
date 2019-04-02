@@ -1,6 +1,7 @@
 package com.detroitlabs.DLFinalAssessment.Controller;
 
 import com.detroitlabs.DLFinalAssessment.Model.EmpireStrikesBackWrapper;
+import com.detroitlabs.DLFinalAssessment.Model.HomeWorld;
 import com.detroitlabs.DLFinalAssessment.Model.MovieCharacters;
 import com.detroitlabs.DLFinalAssessment.Service.SwapiWebService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,9 @@ public class EmpireStrikesBackController {
     public String returnCharacterDetails(@RequestParam("url") String url, ModelMap modelMap) {
         MovieCharacters movieCharacters = swapiWebService.fetchCharacter(url);
         modelMap.put("movieCharacters", movieCharacters);
+
+        HomeWorld homeWorld = swapiWebService.fetchHomeWorld(movieCharacters.getHomeWorld());
+        modelMap.put("homeWorld", homeWorld);
         return "characterdetails";
     }
 }
