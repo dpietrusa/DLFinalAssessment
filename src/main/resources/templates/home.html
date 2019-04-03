@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="stylesheet" type="text/css" th:href="@{/assets/css/app.css}" />
     <meta charset="UTF-8"/>
     <title>Star Wars Episode V: The Empire Strikes Back</title>
 </head>
 <body>
 <h1 th:text="'Episode '+ ${episodeVdetails.episodeId} + ': ' + ${episodeVdetails.title}">Title</h1>
-<h3 th:text="${episodeVdetails.openingCrawl}">Opening Crawl</h3>
+<br>
+<div class="openingcrawl"><h3 th:text="${episodeVdetails.openingCrawl}">Opening Crawl</h3></div>
+
+<div class="selectcharacter"><h3>Select A Character To View Details</h3></div>
 
 <div th:each="MovieCharacters : ${movieCharacterObjects}">
 
