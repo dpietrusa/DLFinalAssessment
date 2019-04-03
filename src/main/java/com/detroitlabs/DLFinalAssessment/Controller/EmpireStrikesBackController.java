@@ -1,5 +1,6 @@
 package com.detroitlabs.DLFinalAssessment.Controller;
 
+import com.detroitlabs.DLFinalAssessment.Data.MovieCharactersRepository;
 import com.detroitlabs.DLFinalAssessment.Model.EmpireStrikesBackWrapper;
 import com.detroitlabs.DLFinalAssessment.Model.HomeWorld;
 import com.detroitlabs.DLFinalAssessment.Model.MovieCharacters;
@@ -20,6 +21,9 @@ public class EmpireStrikesBackController {
     @Autowired
     SwapiWebService swapiWebService;
 
+    @Autowired
+    MovieCharactersRepository movieCharactersRepository;
+
     @RequestMapping("/")
     public String returnHome(ModelMap modelMap) {
         EmpireStrikesBackWrapper empireStrikesBackWrapper = swapiWebService.fetchEmpireStrikesBack();
@@ -31,16 +35,8 @@ public class EmpireStrikesBackController {
         }
         modelMap.put("movieCharactersUrls", movieCharactersUrls);
 
+        List<MovieCharacters> movieCharacterObjects = movieCharactersRepository.getMovieCharacters();
 
-        List<MovieCharacters> movieCharacterObjects = new ArrayList<>();
-
-        for (String string: movieCharactersUrls){
-            movieCharacterObjects.add(swapiWebService.fetchCharacter(string));
-            }
-
-        for (int i = 0; i < movieCharacterObjects.size(); i++){
-            movieCharacterObjects.get(i).setUrl(movieCharactersUrls.get(i));
-        }
         modelMap.put("movieCharacterObjects", movieCharacterObjects);
 
         return "home";
